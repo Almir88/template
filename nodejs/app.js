@@ -4,14 +4,7 @@ var Db=require('./config/database');
 var mongoose=require('mongoose')
 var bodyParser=require('body-parser')
 var Korisnik = require('./models/Korisnik');
-
-
-
-
-
-
 mongoose.connect(Db.url);
-
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.get('/',function(req,res){
@@ -25,16 +18,10 @@ res.sendFile(__dirname+'/View/Login.html');
 });
 app.post('/LoginAdd',function(req,res){
 
-Korisnik.User={
+/*Korisnik.find(
   email:req.body.email,
   psw:req.body.pwd
-
-
-}
-
-
-
-
+);*/
    if(Korisnik.email=="muhamed@hotmail.com" && Korisnik.psw=="merzic")
    {
      res.sendFile(__dirname+'/View/Uspjesno.html');
@@ -53,19 +40,22 @@ app.get('/Registracija',function(req,res)
 });
 app.post('/RegistracijaAdd',function(req,res)
 {
-  var AddKorisnika=new User({
-    User.email:req.body.email,
-    User.psw:req.body.psw
-  })
-  AddKorisnika.save();
-  if(AddKorisnika.email!=null)
-  {
+  Korisnik.create({
 
-   res.send('dodan');
+    email:req.body.email,
+    psw:req.body.psw
+
+  });
+  
+
+  if(Korisnik.email==null)
+  {
+   res.send('nije dodan');
+
   }
   else
   {
-   res.send('nije dodan');
+   res.send('dodan');
   }
 });
 app.get('/IspisKorisnika',function(req,res){
