@@ -17,16 +17,32 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
 
-      <li><a href="login">Login</a></li>
-      <li><a href="Registracija">Registration</a></li>
+      <li><a href="#">Login</a></li>
     </ul>
   </div>
 </nav>
 
+
+
 <div class="container">
-  <h3>Inverted Navbar</h3>
-  <p>An inverted navbar is black instead of gray.</p>
+  <h2>Vertical (basic) form</h2>
+  <form action="/RegistracijaAdd" method="POST">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <button type="submit" class="btn btn-default">Add</button>
+  </form>
 </div>
+
+
+
+
+
 
 </body>
 </html>
