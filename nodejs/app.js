@@ -1,9 +1,11 @@
 var express=require('express');
 var app=express();
 var Db=require('./config/database');
-var mongoose=require('mongoose')
-var bodyParser=require('body-parser')
+var mongoose=require('mongoose');
+var bodyParser=require('body-parser');
 var Korisnik = require('./models/Korisnik');
+
+
 mongoose.connect(Db.url);
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -43,15 +45,14 @@ app.post('/RegistracijaAdd',function(req,res)
   Korisnik.create({
 
     email:req.body.email,
-    psw:req.body.psw
+    pwd:req.body.pwd
 
   });
-  
-
   if(Korisnik.email==null)
   {
    res.send('nije dodan');
-
+   console.log(Korisnik.email);
+   console.log(Korisnik.psw);
   }
   else
   {
